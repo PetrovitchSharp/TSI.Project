@@ -30,15 +30,42 @@ namespace TSI.Controllers
 	    public IActionResult Search(SearchQuery searchQuery)
 	    {
 		    var context = new DataContext();
-		    var cars = context.Cars
+		    var query = context.Cars.AsQueryable();
+
+		    if (searchQuery.Mark != null)
+		    {
+			    query = query.Where(car => car.Mark.Contains(searchQuery.Mark));
+		    }
+
+		    if (searchQuery.BodyType != "Любой")
+		    {
+			    query = query.Where(car => car.BodyType == searchQuery.BodyType);
+		    }
+
+		    if (searchQuery.Drive != "Любой")
+		    {
+			    query = query.Where(car => car.Drive == searchQuery.Drive);
+		    }
+
+		    if (searchQuery.Engine != "Любой")
+		    {
+			    query = query.Where(car => car.Engine == searchQuery.Engine);
+		    }
+
+		    if (searchQuery.State != "Любой")
+		    {
+			    query = query.Where(car => car.State == searchQuery.State);
+		    }
+
+		    if (searchQuery.Transmission != "Любой")
+		    {
+			    query = query.Where(car => car.Transmission == searchQuery.Transmission);
+		    }
+
+		    var cars = query
 			    .Where(car => car.Price <= searchQuery.MaxPrice && car.Price >= searchQuery.MinPrice)
-			    .Where(car => car.BodyType == searchQuery.BodyType)
 			    .Where(car => car.Consumption <= searchQuery.MaxConsumption && car.Consumption >= searchQuery.MinConsumption)
-			    .Where(car => car.Drive == searchQuery.Drive)
-			    .Where(car => car.Engine == searchQuery.Engine)
 			    .Where(car => car.Mileage <= searchQuery.MaxMileage && car.Mileage >= searchQuery.MinMileage)
-			    .Where(car => car.State == searchQuery.State)
-			    .Where(car => car.Transmission == searchQuery.Transmission)
 			    .Where(car => car.Year <= searchQuery.MaxYear && car.Year >= searchQuery.MinYear)
 			    .Where(car => car.Power <= searchQuery.MaxPower && car.Power >= searchQuery.MinPower)
 			    .OrderByDescending(car => car.Price)

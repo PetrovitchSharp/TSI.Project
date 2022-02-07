@@ -5,136 +5,145 @@
 
 <script src="~/js/index.js"></script>
 
+@model TSI.Models.SearchQuery
 <main>
     <h1 style="margin-left: 40%">Автосалон "Рога и Колеса"</h1>
     
-    <form class="search" asp-controller="Home" asp-action="">
-        <input type="text" placeholder="Искать здесь...">
-        <button type="submit"></button>
+    <form asp-controller="Home" asp-action="Search">
+        <div class="filters">
+            <div class="search">
+                <input type="text" placeholder="Искать здесь..." asp-for="Mark">
+                <button type="submit"></button>
+            </div>
+            <div id="filtersBlock">
+                <div class="filter-item">
+                    <p>Состояние авто</p>
+                    <select asp-for="State" id="state">
+                        <option>Подержаный</option>
+                        <option>Новый</option>
+                        <option selected>Любой</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <p>Тип кузова</p>
+                    <select asp-for="BodyType" id="bodytype">
+                        <option>Купе</option>
+                        <option>Универсал</option>
+                        <option>Седан</option>
+                        <option>Хэтчбек</option>
+                        <option selected>Любой</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <p>Тип КПП</p>
+                    <select asp-for="Transmission" id="transmission">
+                        <option>АКПП</option>
+                        <option>МКПП</option>
+                        <option selected>Любой</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <p>Тип двигателя</p>
+                    <select asp-for="Engine" id="engine">
+                        <option>Бензиновый</option>
+                        <option>Дизельный</option>
+                        <option selected>Любой</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <p>Привод</p>
+                    <select asp-for="Drive" id="drive">
+                        <option>Задний</option>
+                        <option>Передний</option>
+                        <option>Полный</option>
+                        <option selected>Любой</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <p>Ценовой диапазон (от)</p>
+                    <input type="range" id="minprice" min="0" max="1e7" step="10000" value="0" onchange="changeInput(this, 'priceOutput1')" oninput="changeInput(this,'priceOutput1')" asp-for="MinPrice"/>
+                    <p>
+                        <output id="priceOutput1">0</output>
+                        р
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Ценовой диапазон (до)</p>
+                    <input type="range" id="maxprice" min="0" max="1e7" step="10000" value="1e7" onchange="changeInput(this, 'priceOutput2')" oninput="changeInput(this,'priceOutput2')" asp-for="MaxPrice"/>
+                    <p>
+                        <output id="priceOutput2">10000000</output>
+                        р
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Мощность двигателя (от)</p>
+                    <input type="range" id="minpower" min="0" max="300" step="10" value="0" onchange="changeInput(this, 'powerOutput1')" oninput="changeInput(this,'powerOutput1')" asp-for="MinPower"/>
+                    <p>
+                        <output id="powerOutput1">0</output>
+                        л.с.
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Мощность двигателя (до)</p>
+                    <input type="range" id="maxpower" min="0" max="300" step="10" value="300" onchange="changeInput(this, 'powerOutput2')" oninput="changeInput(this,'powerOutput2')" asp-for="MaxPower"/>
+                    <p>
+                        <output id="powerOutput2">300</output>
+                        л.с.
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Пробег (от)</p>
+                    <input type="range" id="minmileage" min="0" max="1e6" step="5000" value="0" onchange="changeInput(this, 'mileageOutput1')" oninput="changeInput(this,'mileageOutput1')" asp-for="MinMileage"/>
+                    <p>
+                        <output id="mileageOutput1">0</output>
+                        км
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Пробег (до)</p>
+                    <input type="range" id="maxmileage" min="0" max="1e6" step="5000" value="1e6" onchange="changeInput(this, 'mileageOutput2')" oninput="changeInput(this,'mileageOutput2')" asp-for="MaxMileage"/>
+                    <p>
+                        <output id="mileageOutput2">1000000</output>
+                        км
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Расход на 100 км (от)</p>
+                    <input type="range" id="mincons" min="0" max="25" step="0.1" value="0" onchange="changeInput(this, 'consOutput1')" oninput="changeInput(this,'consOutput1')" asp-for="MinConsumption"/>
+                    <p>
+                        <output id="consOutput1">0</output>
+                        л/100 км
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Расход на 100 км (до)</p>
+                    <input type="range" id="maxcons" min="0" max="25" step="0.1" value="50" onchange="changeInput(this, 'consOutput2')" oninput="changeInput(this,'consOutput2')" asp-for="MaxConsumption"/>
+                    <p>
+                        <output id="consOutput2">25</output>
+                        л/100 км
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Год выпуска (от)</p>
+                    <input type="range" id="minyear" min="1950" max="2022" step="1" value="1950" onchange="changeInput(this, 'yearOutput1')" oninput="changeInput(this,'yearOutput1')" asp-for="MinYear"/>
+                    <p>
+                        <output id="yearOutput1">1950</output>
+                    </p>
+                </div>
+                <div class="filter-item">
+                    <p>Год выпуска (до)</p>
+                    <input type="range" id="maxyear" min="1950" max="2022" step="1" value="2022" onchange="changeInput(this, 'yearOutput2')" oninput="changeInput(this,'yearOutput2')" asp-for="MaxYear"/>
+                    <p>
+                        <output id="yearOutput2">2022</output>
+                    </p>
+                </div>
+            </div>
+            <p onclick="changeFilters()" id="filtBtn" class="changeBtn" >Свернуть</p>
+        </div>
 
     </form>
 
-    <div class="filters">
-        <div id="filters">
-        <div class="filter-item">
-            <p>Состояние авто</p>
-            <select>
-                <option>Подержаный</option>
-                <option>Новый</option>
-            </select>
-        </div>
-        <div class="filter-item">
-            <p>Тип кузова</p>
-            <select>
-                <option>Купе</option>
-                <option>Универсал</option>
-                <option>Седан</option>
-                <option>Хэтчбек</option>
-            </select>
-        </div>
-        <div class="filter-item">
-            <p>Тип КПП</p>
-            <select>
-                <option>АКПП</option>
-                <option>МКПП</option>
-            </select>
-        </div>
-        <div class="filter-item">
-            <p>Тип двигателя</p>
-            <select>
-                <option>Бензиновый</option>
-                <option>Дизельный</option>
-            </select>
-        </div>
-        <div class="filter-item">
-            <p>Привод</p>
-            <select>
-                <option>Задний</option>
-                <option>Передний</option>
-                <option>Полный</option>
-            </select>
-        </div>
-            <div class="filter-item">
-                <p>Ценовой диапазон (от)</p>
-                <input type="range" min="0" max="1e7" step="10000" value="0" onchange="changeInput(this,'priceOutput1')" oninput="changeInput(this,'priceOutput1')"/>
-                <p>
-                    <output id="priceOutput1">0</output>
-                    р
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Ценовой диапазон (до)</p>
-                <input type="range" min="0" max="1e7" step="10000" value="1e7" onchange="changeInput(this,'priceOutput2')" oninput="changeInput(this,'priceOutput2')"/>
-                <p>
-                    <output id="priceOutput2">10000000</output>
-                    р
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Мощность двигателя (от)</p>
-                <input type="range" min="0" max="300" step="10" value="0" onchange="changeInput(this,'powerOutput1')" oninput="changeInput(this,'powerOutput1')"/>
-                <p>
-                    <output id="powerOutput1">0</output>
-                    л.с.
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Мощность двигателя (до)</p>
-                <input type="range" min="0" max="300" step="10" value="300" onchange="changeInput(this,'powerOutput2')" oninput="changeInput(this,'powerOutput2')"/>
-                <p>
-                    <output id="powerOutput2">300</output>
-                    л.с.
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Пробег (от)</p>
-                <input type="range" min="0" max="1e6" step="5000" value="0" onchange="changeInput(this,'mileageOutput1')" oninput="changeInput(this,'mileageOutput1')"/>
-                <p>
-                    <output id="mileageOutput1">0</output>
-                    км
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Пробег (до)</p>
-                <input type="range" min="0" max="1e6" step="5000" value="1e6" onchange="changeInput(this,'mileageOutput2')" oninput="changeInput(this,'mileageOutput2')"/>
-                <p>
-                    <output id="mileageOutput2">1000000</output>
-                    км
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Расход на 100 км (от)</p>
-                <input type="range" min="0" max="25" step="0.1" value="0" onchange="changeInput(this,'consOutput1')" oninput="changeInput(this,'consOutput1')"/>
-                <p>
-                    <output id="consOutput1">0</output>
-                    л/100 км
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Расход на 100 км (до)</p>
-                <input type="range" min="0" max="25" step="0.1" value="50" onchange="changeInput(this,'consOutput2')" oninput="changeInput(this,'consOutput2')"/>
-                <p>
-                    <output id="consOutput2">25</output>
-                    л/100 км
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Год выпуска (от)</p>
-                <input type="range" min="1950" max="2022" step="1" value="1950" onchange="changeInput(this,'yearOutput1')" oninput="changeInput(this,'yearOutput1')"/>
-                <p>
-                    <output id="yearOutput1">1950</output>
-                </p>
-            </div>
-            <div class="filter-item">
-                <p>Год выпуска (до)</p>
-                <input type="range" min="1950" max="2022" step="1" value="2022" onchange="changeInput(this,'yearOutput2')" oninput="changeInput(this,'yearOutput2')"/>
-                <p>
-                    <output id="yearOutput2">2022</output>
-                </p>
-            </div>
-        </div>
-        <button onclick="changeFilters()" id="filtBtn">Свернуть</button>
-    </div>
+    
 
     <p class="results">Каталог автомобилей</p>
     

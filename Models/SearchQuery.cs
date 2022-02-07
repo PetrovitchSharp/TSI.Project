@@ -8,6 +8,7 @@ namespace TSI.Models
 {
 	public class SearchQuery
 	{
+		public string Mark { get; set; }
 		public string State { get; set; }
 		public int MinYear { get; set; }
 		public int MaxYear { get; set; }

@@ -434,9 +434,7 @@ table {
 
 .search {
     position: relative;
-    width: 300px;
-    margin: 0 auto;
-    background: lightslategrey;
+    width: 100%
 }
 .search input, button {
     border: none;
@@ -468,8 +466,7 @@ table {
 }
 .filters {
     margin-left: 35%;
-    margin-top: 10px;
-    width: 30%;
+	width: 30%;
     border: 1px black solid;
     background: lightslategrey;
 }
@@ -495,7 +492,7 @@ table {
 .filter-item input {
     width: 55%;
 }
-.filters button {
+.changeBtn {
     margin-left: 45%;
     color: white;
 }
