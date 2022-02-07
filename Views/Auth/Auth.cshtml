@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Добавить автомобиль";
+}
+
+@model TSI.Models.LoginViewModel
+
+<main class="centrified-main">
+    <div class="centrified-form">
+        <form asp-controller="Auth" asp-action="Login" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="email">Электронная почта:</label><br>
+            <input type="email" id="mail" name="email" asp-for="Email" autocomplete="on"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password" asp-for="Password" required><br>
+            <div class="submit-button">
+                <input type="submit" value="Войти">
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+
+        </form>
+        <a asp-controller="Register" asp-action="Register">Еще не зарегистрированы?</a>
+    </div>
+
+</main>

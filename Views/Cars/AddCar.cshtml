@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Добавление автомобиля";
+}
+
+@model TSI.Models.Car
+
+<script src="~/js/photo_helper.js"></script>
+
+<main class="centrified-main">
+    <div class="centrified-form">
+        <form id="form" asp-controller="Cars" asp-action="AddCar" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+
+            <label for="mark">Марка автомобиля:</label><br/>
+            <input type="text" id="mark" asp-for="Mark" required="on"><br/>
+
+            <label for="year">Год производства:</label><br/>
+            <input type="number" id="year" asp-for="Year" required="on" min="1883"><br/>
+
+            <label for="state">Состояние автомобиля:</label><br/>
+            <select id="state" asp-for="State" required="on">
+                <option>Новый</option>
+                <option>Подержанный</option>
+            </select>
+
+            <label for="mileage">Пробег:</label><br/>
+            <input type="number" id="mileage" required="on" min="0" asp-for="Mileage"><br/>
+
+            <label for="bodytype">Тип кузова:</label><br/>
+            <select id="bodytype" required="on" asp-for="BodyType">
+                <option>Купе</option>
+                <option>Универсал</option>
+                <option>Хэтчбек</option>
+                <option>Седан</option>
+            </select>
+
+            <label for="transmission">Тип КПП:</label><br/>
+            <select id="transmission" required="on" asp-for="Transmission">
+                <option>МКПП</option>
+                <option>АКПП</option>
+            </select>
+
+            <label for="gears">Количество передач:</label><br/>
+            <input type="number" id="gears" required="on" min="1" max="12" asp-for="Gears"><br/>
+
+            <label for="engine">Тип двигателя:</label><br/>
+            <select id="engine" required="on" asp-for="Engine">
+                <option>Бензиновый</option>
+                <option>Дизельный</option>
+            </select>
+
+            <label for="power">Мощность двигателя:</label><br/>
+            <input type="number" id="power" required="on" min="1" asp-for="Power"><br/>
+
+            <label for="drive">Привод:</label><br/>
+            <select id="drive" required="on" asp-for="Drive">
+                <option>Передний</option>
+                <option>Задний</option>
+                <option>Полный</option>
+            </select>
+
+            <label for="consumption">Расход на 100 км:</label><br/>
+            <input type="number" id="consumption" required="on" asp-for="Consumption"><br/>
+
+            <label for="price">Цена:</label><br/>
+            <input type="number" id="price" required="on" min="0" asp-for="Price"><br/>
+
+            <label for="imageData">Изображение автомобиля: </label><br/>
+            <input type="file" onchange="onImageUpload()" name="imageData" id="imageData" accept="image/png" required="on" asp-for="Photo">
+
+
+            <div class="submit-button">
+                <input type="submit" value="Добавить автомобиль в каталог">
+            </div>
+
+        </form>
+    </div>
+</main>

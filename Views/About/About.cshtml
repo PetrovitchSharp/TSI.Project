@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "О нас";
+}
+
+<main class="centrified-main">
+    <p class="info">Общая информация о нас</p>
+    <p style="margin-left: 20px">
+        Автосалон "Рога и Колеса" был открыт зимой 2000 года. Весной 2020 года автосалон обзавелся
+        собственным вебсайтом для ведения продаж в режиме онлайн
+    </p>
+
+    <div class="find-info">
+
+        <div>
+            <div class="how-to-reach">
+                <p class="sub-info">Как до нас добраться</p>
+                <p>
+                    Наш автосалон имеет, помимо главного офиса, осуществляющего административные функции,
+                    два офиса продаж, из которых вы можете забрать приобретенный автомобиль. Они расположены
+                    по адресам:
+                </p>
+                <ul>
+                    @foreach (var address in ViewBag.Addresses)
+                    {
+                        <li>@address</li>
+                    }
+                </ul>
+            </div>
+            <div class="how-to-reach">
+                <p class="sub-info">Наши партнеры</p>
+                <p>
+                    С нашим автосалоном сотрудничают многие автопроизводители со всего мира.
+                    Наиболее значимыми для нас партнеров являются:
+                </p>
+                <ul>
+                    <li>АвтоВАЗ</li>
+                    <li>Ford</li>
+                    <li>Skoda</li>
+                    <li>Volkswagen</li>
+                    <li>Renault</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="map">
+            <img src="~/img/maps/map_1.jpg" alt="Офис на Венцека"/>
+        </div>
+        <div class="map">
+            <img src="~/img/maps/map_2.jpg" alt="Офис на Ленина"/>
+        </div>
+
+    </div>
+
+
+</main>

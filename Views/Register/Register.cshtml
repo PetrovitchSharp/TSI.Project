@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Условия покупки";
+}
+
+@model TSI.Models.UserViewModel
+
+<main class="centrified-main">
+    <div class="centrified-form">
+        <form asp-controller="Register" asp-action="AddNewUser" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="name">ФИО:</label><br>
+            <input type="text" id="name" name="name" asp-for="Name"><br>
+            <label for="email">Электронная почта:</label><br>
+            <input type="email" id="mail" name="email" asp-for="Email"><br>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password" asp-for="Password"><br>
+            <label for="checkpassword">Подтвердите пароль:</label><br>
+            <input type="password" id="check_password" name="checkpassword" asp-for="CheckPassword"><br>
+            <div class="submit-button">
+                <input type="submit" value="Зарегистрироваться">
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+
+        </form>
+        <a asp-controller="Auth" asp-action="Auth">Уже зарегистрированы?</a>
+    </div>
+</main>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Обновление офиса";
+}
+
+@model TSI.Models.Office
+
+<main class="centrified-main">
+    <div class="centrified-form">
+        <form id="form" asp-controller="Offices" asp-action="UpdateOffice_" method="post" enctype="multipart/form-data" asp-route-id="@ViewBag.Office.OfficeId">
+
+            <label for="city">Город:</label><br/>
+            <input type="text" id="city" asp-for="City" required="on" value="@ViewBag.Office.City"><br/>
+            
+            <label for="street">Улица:</label><br/>
+            <input type="text" id="street" asp-for="Street" required="on" value="@ViewBag.Office.Street"><br/>
+            
+            <label for="building">Строение:</label><br/>
+            <input type="text" id="building" asp-for="Building" required="on" value="@ViewBag.Office.Building"><br/>
+
+            <div class="submit-button">
+                <input type="submit" value="Обновить офис">
+            </div>
+
+        </form>
+    </div>
+</main>

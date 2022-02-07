@@ -1,0 +1,118 @@
+﻿@using TSI.Helpers
+@{
+    ViewData["Title"] = "Онлайн Автосалон \"Рога и копыта\"";
+}
+
+<script src="~/js/index.js"></script>
+
+<main>
+    <h1 style="margin-left: 40%">Автосалон "Рога и Колеса"</h1>
+    
+    <form class="search">
+        <input type="text" placeholder="Искать здесь...">
+        <button type="submit"></button>
+
+    </form>
+
+    <div class="filters">
+        <div id="filters">
+        <div class="filter-item">
+            <p>Состояние авто</p>
+            <select>
+                <option>Подержаный</option>
+                <option>Новый</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <p>Тип кузова</p>
+            <select>
+                <option>Купе</option>
+                <option>Универсал</option>
+                <option>Седан</option>
+                <option>Хэтчбек</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <p>Тип КПП</p>
+            <select>
+                <option>АКПП</option>
+                <option>МКПП</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <p>Тип двигателя</p>
+            <select>
+                <option>Бензиновый</option>
+                <option>Дизельный</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <p>Привод</p>
+            <select>
+                <option>Задний</option>
+                <option>Передний</option>
+                <option>Полный</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <p>Ценовой диапазон</p>
+            <input type="range" min="0" max="1e7"/>
+            <p>
+                <output>100000</output>
+                р
+            </p>
+        </div>
+        <div class="filter-item">
+            <p>Мощность двигателя</p>
+            <input type="range" min="0" max="300"/>
+            <p>
+                <output>122</output>
+                л.с.
+            </p>
+        </div>
+        <div class="filter-item">
+            <p>Пробег</p>
+            <input type="range" min="0" max="1e6"/>
+            <p>
+                <output>100000</output>
+                км
+            </p>
+        </div>
+        <div class="filter-item">
+            <p>Расход на 100 км</p>
+            <input type="range" min="0" max="50"/>
+            <p>
+                <output>8.5</output>
+                л/100 км
+            </p>
+        </div>
+        <div class="filter-item">
+            <p>Год выпуска</p>
+            <input type="range" min="1950" max="2021" step="1"/>
+            <p>
+                <output>2012</output>
+            </p>
+        </div>
+        </div>
+        <button onclick="changeFilters()" id="filtBtn">Свернуть</button>
+    </div>
+
+    <p class="results">Каталог автомобилей</p>
+    
+    <div class="auto-block">
+        <ul>
+            @foreach (var car in ViewBag.Cars)
+            {
+                <li>
+                    <img src="@Url.Content(ImageHelper.GetUrl(car.Photo))"/>
+                    <div class="inner-auto-block">
+                        <p>@car.Mark @car.Year</p>
+                        <p>@car.Power л.с. @car.Transmission @car.Gears</p>
+                        <p>@car.Price руб</p>
+                        <a asp-controller="Cars" asp-action="CarPage" asp-route-id="@car.CarId">Подробнее</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</main>

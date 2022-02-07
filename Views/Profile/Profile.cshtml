@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+    <main class="centrified-main">
+    <div class="profile">
+        <p>ФИО</p>
+        <p>@ViewBag.User.Name</p>
+    </div>
+    <div class="profile">
+        <p>Электронная почта</p>
+        <p>@ViewBag.User.Email</p>
+    </div>
+
+    <p class="info">Ваши заказы:</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Сумма заказа</th>
+                <th>Дата заказа</th>
+                <th>Статус заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var order in ViewBag.Orders)
+            {
+                <tr>
+                    <td>@order.Total руб</td>
+                    <td>@order.CreateDate</td>
+                    <td>@order.Status</td>
+                </tr>
+            }
+            </tbody>
+
+        </table>
+        
+        @if (ViewBag.User.Email == "admin@mail.ru")
+        {
+            <p>
+                <a asp-controller="Cars" asp-action="AddCar">Добавить авто</a>
+                <a asp-controller="Admin" asp-action="CarPanel">Панель администрирования авто</a>
+                <a asp-controller="Admin" asp-action="OfficePanel">Панель администрирования офисов</a>
+                <a asp-controller="Admin" asp-action="OrderPanel">Панель администрирования заказов</a>
+            </p>
+        }
+        <p>
+            <a asp-controller="Auth" asp-action="Auth">Страница авторизации</a>
+            <a asp-controller="Register" asp-action="Register">Страница регистрации</a>
+            <a asp-controller="Profile" asp-action="UpdateUser" asp-route-id="@ViewBag.User.UserId">Обновить данные</a>
+            <a asp-controller="Profile" asp-action="OnDeleteUser" asp-route-id="@ViewBag.User.UserId">Удалить учетную запись</a>
+        </p>
+        
+    </main>

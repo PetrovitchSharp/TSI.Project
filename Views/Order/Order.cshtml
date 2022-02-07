@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Оформление заказа";
+}
+
+@using TSI.Helpers
+@model TSI.Models.OrderViewModel
+
+<main>
+    <div class="auto-block">
+        <p class="car-title">Ваши покупки</p>
+        <ul>
+            @foreach (var cartItem in ViewBag.CartItems)
+            {
+                <li>
+                    <img src="@Url.Content(ImageHelper.GetUrl(cartItem.Photo))"/>
+                    <div class="inner-auto-block">
+                        <p>@cartItem.Mark @cartItem.Year</p>
+                        <p>@cartItem.Power л.с. @cartItem.Transmission @cartItem.Gears</p>
+                        <p>@cartItem.Price руб</p>
+                        <a asp-controller="Cars" asp-action="CarPage" asp-route-id="@cartItem.CarId">Подробнее</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+
+    <form class="order" asp-controller="Order" asp-action="AddOrder" method="post" enctype="multipart/form-data">
+        <p>Оформление заказа</p>
+        <div class="order-item">
+            <label for="office">Выберите офис продаж</label>
+            <select id="office" asp-for="Office">
+                @foreach (var office in ViewBag.Offices)
+                {
+                    <option>@office.FullAddress</option>
+                }
+            </select>
+        </div>
+        <div class="order-item">
+            <label for="time">Выберите удобное время выдачи заказа</label>
+            <select id="time" asp-for="Time">
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+            </select>
+        </div>
+        <div class="order-item">
+            <label for="payment">Выберите способ оплаты</label>
+            <select id="payment" asp-for="Payment">
+                <option>Банковской картой онлайн</option>
+                <option>Наличными при получении</option>
+            </select>
+        </div>
+        <p>Общая сумма покупки: @ViewBag.Total руб</p>
+        <input type="submit" style="margin-left: 45%" value="Подтвердить заказ">
+    </form>
+
+
+</main>

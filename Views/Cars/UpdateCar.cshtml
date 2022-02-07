@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Обновление автомобиля";
+}
+
+@model TSI.Models.Car
+
+<main class="centrified-main">
+    <div class="centrified-form" style="margin-top: 100px">
+        <form id="form" asp-controller="Cars" asp-action="UpdateCar" method="post" enctype="multipart/form-data" onsubmit="return validate()" asp-route-id="@ViewBag.Car.CarId">
+
+            <label for="mark">Марка автомобиля:</label><br/>
+            <input type="text" id="mark" asp-for="Mark" required="on" value="@ViewBag.Car.Mark"><br/>
+
+            <label for="year">Год производства:</label><br/>
+            <input type="number" id="year" asp-for="Year" required="on" min="1883" value="@ViewBag.Car.Year"><br/>
+
+            <label for="state">Состояние автомобиля:</label><br/>
+            <select id="state" asp-for="State" required="on">
+                <option>Новый</option>
+                <option>Подержанный</option>
+            </select>
+
+            <label for="mileage">Пробег:</label><br/>
+            <input type="number" id="mileage" required="on" min="0" asp-for="Mileage" value="@ViewBag.Car.Mileage"><br/>
+
+            <label for="bodytype">Тип кузова:</label><br/>
+            <select id="bodytype" required="on" asp-for="BodyType">
+                <option>Купе</option>
+                <option>Универсал</option>
+                <option>Хэтчбек</option>
+                <option>Седан</option>
+            </select>
+
+            <label for="transmission">Тип КПП:</label><br/>
+            <select id="transmission" required="on" asp-for="Transmission">
+                <option>МКПП</option>
+                <option>АКПП</option>
+            </select>
+
+            <label for="gears">Количество передач:</label><br/>
+            <input type="number" id="gears" required="on" min="1" max="12" asp-for="Gears" value="@ViewBag.Car.Gears"><br/>
+
+            <label for="engine">Тип двигателя:</label><br/>
+            <select id="engine" required="on" asp-for="Engine">
+                <option>Бензиновый</option>
+                <option>Дизельный</option>
+            </select>
+
+            <label for="power">Мощность двигателя:</label><br/>
+            <input type="number" id="power" required="on" min="1" asp-for="Power" value="@ViewBag.Car.Power"><br/>
+
+            <label for="drive">Привод:</label><br/>
+            <select id="drive" required="on" asp-for="Drive">
+                <option>Передний</option>
+                <option>Задний</option>
+                <option>Полный</option>
+            </select>
+
+            <label for="consumption">Расход на 100 км:</label><br/>
+            <input type="number" id="consumption" required="on" asp-for="Consumption" value="@ViewBag.Car.Consumption"><br/>
+
+            <label for="price">Цена:</label><br/>
+            <input type="number" id="price" required="on" min="0" asp-for="Price" value="@ViewBag.Car.Price"><br/>
+
+
+            <div class="submit-button">
+                <input type="submit" value="Обновить данные об автомобиле">
+            </div>
+
+        </form>
+    </div>
+</main>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Панель администратора";
+}
+
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>Марка</th>
+            <th>Состояние</th>
+            <th>Год производства</th>
+            <th>Пробег</th>
+            <th>Тип кузова</th>
+            <th>Тип КПП</th>
+            <th>Количество передач</th>
+            <th>Тип двигателя</th>
+            <th>Мощность</th>
+            <th>Привод</th>
+            <th>Расход</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var row in ViewBag.Cars) {
+            <tr>
+                <td><a asp-controller="Cars" asp-action="UpdateCar" asp-route-id="@row.CarId">Редактировать</a></td>
+                <td><a asp-controller="Admin" asp-action="OnDeleteCar" asp-route-id="@row.CarId">Удалить</a></td>
+                <td>@row.Mark</td>
+                <td>@row.State</td>
+                <td>@row.Year</td>
+                <td>@row.Mileage</td>
+                <td>@row.BodyType</td>
+                <td>@row.Transmission</td>
+                <td>@row.Gears</td>
+                <td>@row.Engine</td>
+                <td>@row.Power</td>
+                <td>@row.Drive</td>
+                <td>@row.Consumption</td>
+                <td>@row.Price</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</main>

@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<header>
+    <div class="navigation">
+        <ul>
+            <li>
+                <div class="logo">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img src="~/img/logo.png" alt="Лого"/>
+                    </a>
+                </div>
+            </li>
+            <li class="navbuttons">
+                <nav>
+                    <a title="Как выбрать автомобиль" asp-controller="Advices" asp-action="Advices">Как выбрать автомобиль</a>
+                    <div class="vertical-line"></div>
+                    <a title="О нас" asp-controller="About" asp-action="About">О нас</a>
+                    <div class="vertical-line"></div>
+                    <a title="Условия покупки" asp-controller="Terms" asp-action="Terms">Условия покупки</a>
+                    <div class="vertical-line"></div>
+                    <a title="Оформление заказа" asp-controller="Order" asp-action="Order">Оформление заказа</a>
+                    <div class="vertical-line"></div>
+                    <a title="Личный кабинет" asp-controller="Profile" asp-action="Profile">Личный кабинет</a>
+                </nav>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="container">
+    @RenderBody()
+</div>
+<footer>
+    <div class="footer-info">
+        <div class="main-office">
+            <p>Адрес главного офиса:<br/>
+                г. Самара<br/>
+                ул. Льва Толстого<br/>
+                д. 15 <br/>
+                оф. 771</p>
+        </div>
+        <div class="contacts">
+            <p>Телефон горячей линии:<br/>
+                8-800-555-35-35</p>
+            <p>Адрес электронной почты:<br/>
+                superauto@superauto.com</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = ViewBag.Title;
+}
+
+<script src="~/js/carpage.js"></script>
+
+<main class="centrified-main" id="main">
+    <div class="find-info">
+        <div>
+            <img src="@ViewBag.Img" alt="@ViewBag.Title" id="myImg" onclick="openModal()"/>
+        </div>
+        <div>
+            <p class="car-title">@ViewBag.Title</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Характеристика</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Кузов</th>
+                    <td>@ViewBag.Car.BodyType</td>
+                </tr>
+                <tr>
+                    <th>Привод</th>
+                    <td>@ViewBag.Car.Drive</td>
+                </tr>
+                <tr>
+                    <th>Тип двигателя</th>
+                    <td>@ViewBag.Car.Engine</td>
+                </tr>
+                <tr>
+                    <th>Мощность двигателя</th>
+                    <td>@ViewBag.Car.Power л.с.</td>
+                </tr>
+                <tr>
+                    <th>Расход</th>
+                    <td>@ViewBag.Car.Consumption л \ 100 км</td>
+                </tr>
+                <tr>
+                    <th>КПП</th>
+                    <td>@ViewBag.Car.Gears ст. @ViewBag.Car.Transmission</td>
+                </tr>
+                <tr>
+                    <th>Состояние автомобиля</th>
+                    <td>@ViewBag.Car.State</td>
+                </tr>
+                <tr>
+                    <th>Пробег</th>
+                    <td>@ViewBag.Car.Mileage км</td>
+                </tr>
+                <tr>
+                    <th>Год выпуска</th>
+                    <td>@ViewBag.Car.Year</td>
+                </tr>
+                <tr>
+                    <th>Цена</th>
+                    <td>@ViewBag.Car.Price руб</td>
+                </tr>
+                </tbody>
+            </table>
+            <form asp-controller="Order" asp-action="AddToOrder"  asp-route-id="@ViewBag.Car.CarId" method="post">
+                <input  class="buy-button" type="submit" value="Приобрести">
+            </form>
+            
+
+        </div>
+    </div>
+    <div id="imgModal" class="modal">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <img class="modal-content" id="modalImg">
+
+        <div id="caption"></div>
+    </div>
+</main>

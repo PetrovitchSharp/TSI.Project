@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Панель администратора";
+}
+
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>Город</th>
+            <th>Улица</th>
+            <th>Строение</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var row in ViewBag.Offices) {
+            <tr>
+                <td><a asp-controller="Offices" asp-action="UpdateOffice" asp-route-id="@row.OfficeId">Редактировать</a></td>
+                <td><a asp-controller="Admin" asp-action="OnDeleteOffice" asp-route-id="@row.OfficeId">Удалить</a></td>
+                <td>@row.City</td>
+                <td>@row.Street</td>
+                <td>@row.Building</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</main>

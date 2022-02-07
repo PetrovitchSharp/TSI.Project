@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Обновление пользовательских данных";
+}
+
+@model TSI.Models.User
+
+<main class="centrified-main">
+    <div class="centrified-form" style="margin-top: 100px">
+        <form asp-controller="Profile" asp-action="UpdateUser_" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="name">ФИО:</label><br>
+            <input type="text" id="name" name="name" asp-for="Name"><br>
+            <label for="email">Электронная почта:</label><br>
+            <input type="email" id="mail" name="email" asp-for="Email"><br>
+            <div class="submit-button">
+                <input type="submit" value="Обновить данные профиля">
+            </div>
+        </form>
+    </div>
+</main>

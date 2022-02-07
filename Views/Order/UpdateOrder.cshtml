@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Обновление статуса заказа";
+}
+
+@model TSI.Models.Car
+
+<main class="centrified-main">
+    <div class="centrified-form" style="margin-top: 100px">
+        <form id="form" asp-controller="Order" asp-action="UpdateOrder" method="post" enctype="multipart/form-data" asp-route-id="@ViewBag.Order.OrderId">
+
+            <label for="state">Состояние автомобиля:</label><br/>
+            <select id="state" asp-for="State" required="on">    
+                <option>Заказ принят</option>
+                <option>Автомобиль(и) находятся на таможне</option>
+                <option>Автомобиль(и) транспортируются</option>
+                <option>Готов к выдаче в офисе продаж</option>
+            </select>
+
+            <div class="submit-button">
+                <input type="submit" value="Обновить статус заказа">
+            </div>
+
+        </form>
+    </div>
+</main>

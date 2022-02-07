@@ -1,0 +1,108 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TSI
+build_property.RootNamespace = TSI
+build_property.ProjectDir = F:\docs\4-7-ТСИ-Лаб\Курсовая\TSI\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = F:\docs\4-7-ТСИ-Лаб\Курсовая\TSI
+build_property._RazorSourceGeneratorDebug = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/About/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Admin/CarPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FyUGFuZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Admin/OfficePanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT2ZmaWNlUGFuZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Admin/OrderPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Advices/Advices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWR2aWNlc1xBZHZpY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Auth/Auth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBdXRoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Cars/AddCar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xBZGRDYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Cars/Carpage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDYXJwYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Cars/UpdateCar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xVcGRhdGVDYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Offices/AddOffice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmaWNlc1xBZGRPZmZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Offices/UpdateOffice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmaWNlc1xVcGRhdGVPZmZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Order/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Order/UpdateOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcVXBkYXRlT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Profile/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Profile/UpdateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxVcGRhdGVVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Register/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/Terms/Terms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybXNcVGVybXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/docs/4-7-ТСИ-Лаб/Курсовая/TSI/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
