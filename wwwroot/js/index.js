@@ -9,3 +9,7 @@ function changeFilters() {
 	}
 
 }
+
+function changeInput(obj, id) {
+	document.getElementById(id).value = obj.value;
+}
