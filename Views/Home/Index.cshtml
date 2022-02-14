@@ -7,19 +7,20 @@
 
 @model TSI.Models.SearchQuery
 <main>
+
     <h1 style="margin-left: 40%">Автосалон "Рога и Колеса"</h1>
-    
     <form asp-controller="Home" asp-action="Search">
         <div class="filters">
             <div class="search">
-                <input type="text" placeholder="Искать здесь..." asp-for="Mark">
+                <input type="text" placeholder="Искать здесь..." id='searchstr' asp-for="Mark" onkeyup="smartSearch(this.value)" autocomplete="off">
                 <button type="submit"></button>
             </div>
+            <div id='livesearch'></div>
             <div id="filtersBlock">
                 <div class="filter-item">
                     <p>Состояние авто</p>
                     <select asp-for="State" id="state">
-                        <option>Подержаный</option>
+                        <option>Подержанный</option>
                         <option>Новый</option>
                         <option selected>Любой</option>
                     </select>
@@ -145,7 +146,7 @@
 
     
 
-    <p class="results">Каталог автомобилей</p>
+    <p class="results" id="restitle">Каталог автомобилей</p>
     
     <div class="auto-block">
         <ul>

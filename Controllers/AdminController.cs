@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TSI.DAL;
 using TSI.Models;
 
@@ -89,6 +90,18 @@ namespace TSI.Controllers
 		{
 			var context = new DataContext();
 			return context.Offices.FirstOrDefault(office => office.OfficeId == officeId).FullAddress;
+		}
+
+		[HttpGet]
+		public string GetOfficePanel()
+		{
+			var context = new DataContext();
+
+			var offices = context.Offices
+				.Select(office => new OfficeResponse { City = office.City, Street = office.Street, Building = office.Building })
+				.ToList();
+
+			return JsonConvert.SerializeObject(offices);
 		}
 	}
 }

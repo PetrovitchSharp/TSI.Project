@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TSI.DAL;
 using TSI.Models;
 
@@ -81,7 +82,20 @@ namespace TSI.Controllers
 
 		    }
 		    return View("Index");
-}
+		}
+
+		[HttpGet]
+		public string SmartSearch()
+		{
+			var req = Request.Query.Keys.FirstOrDefault();
+			var context = new DataContext();
+			var cars = context.Cars
+				.Where(car => car.Mark.ToLower().Contains(req.ToLower()))
+				.Select(car => new CarResponse{ Mark = car.Mark, CarId = car.CarId, Year = car.Year})
+				.ToList();
+
+			return JsonConvert.SerializeObject(cars);
+		}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

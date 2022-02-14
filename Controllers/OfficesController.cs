@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Text;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TSI.DAL;
 using TSI.Models;
 
@@ -13,15 +17,53 @@ namespace TSI.Controllers
 			return View();
 		}
 
-		[HttpPost]
-		public IActionResult AddOffice(Office office)
-		{
-			var context = new DataContext();
-			office.FullAddress = GetAddress(office);
+		//[HttpPost]
+		//public IActionResult AddOffice(Office office)
+		//{
+		//	var context = new DataContext();
+		//	office.FullAddress = GetAddress(office);
 
-			context.Offices.Add(office);
+		//	context.Offices.Add(office);
+		//	context.SaveChanges();
+		//	return View();
+		//}
+
+		[HttpPost]
+		[EnableCors]
+		public bool AjaxAddOffice() 
+		{
+			//var parser = HttpMultipartParser.MultipartFormDataParser.ParseAsync(Request.Body).Result;
+			//var params_ = parser.Parameters;
+			var json = "";
+
+			using( var stream = Request.Body)
+			{
+				json = new StreamReader(stream).ReadToEndAsync().Result;
+			}
+
+
+			//var office = new Office{
+			//	City = params_[0].Data,
+			//	Street = params_[1].Data,
+			//	Building = params_[2].Data
+			//}; 
+
+			var office = JsonConvert.DeserializeObject<OfficeResponse>(json);
+			var officeData = new Office
+			{
+				City = office.City,
+				Street = office.Street,
+				Building = office.Building
+			};
+
+			var context = new DataContext();
+			officeData.FullAddress = GetAddress(officeData);
+			officeData.OfficeId = Guid.NewGuid();
+
+			context.Offices.Add(officeData);
 			context.SaveChanges();
-			return View();
+
+			return true;
 		}
 
 		public IActionResult UpdateOffice(Guid id)

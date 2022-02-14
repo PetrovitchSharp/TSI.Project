@@ -49,3 +49,79 @@ function refreshFilters() {
 	document.getElementById("yearOutput1").value = 1950;
 	document.getElementById("yearOutput2").value = 2022;
 }
+
+function smartSearch(req) {
+	if (req.length == 0) {
+		document.getElementById("livesearch").innerHTML = "";
+		document.getElementById("livesearch").style.border = "0px";
+		return;
+	}
+
+	var html = "";
+
+	jQuery.ajax({
+		url: 'http://localhost:49739/Home/SmartSearch',
+		contentType: 'application/json; charset=utf-8',
+		method: 'GET',
+		data: req,
+		success: function (data) {
+			var res = JSON.parse(data);
+			res.forEach(
+				elem => html += "<a href='http://localhost:49739/Cars/CarPage/" +
+					elem.CarId +
+					"'>" +
+					elem.Mark +
+					" " +
+					elem.Year +
+					"</a></br>"
+			);
+		},
+		complete: function () {
+			document.getElementById("livesearch").innerHTML = html;
+			document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+		}
+	})
+}
+
+function smartSearch1(req) {
+	var url = 'http://localhost:49739/Home/SmartSearch?' + req
+	console.log(req, url)
+	if (req.length == 0) {
+		document.getElementById("livesearch").innerHTML = "";
+		document.getElementById("livesearch").style.border = "0px";
+		return;
+	}
+
+	var html = "";
+
+	var request = new XMLHttpRequest();
+
+	request.open(
+		"GET",
+		url
+	)
+	request.send()
+
+	request.onload = function () {
+		if (request.status != 200) {
+			alert("При загрузке проищошла ошибка")
+		}
+		else {
+			var res = JSON.parse(request.responseText);
+			res.forEach(
+				elem => html += "<a href='http://localhost:49739/Cars/CarPage/" +
+					elem.CarId +
+					"'>" +
+					elem.Mark +
+					" " +
+					elem.Year +
+					"</a></br>"
+			);
+		}
+	}
+
+	request.onloadend = function () {
+		document.getElementById("livesearch").innerHTML = html;
+		document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+	}
+}
